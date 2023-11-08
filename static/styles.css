@@ -87,8 +87,13 @@ input[type="number"] {
 }
 
 .how-to-use h2,
-.credits h2 {
+.faq h2 {
   margin-top: 0;
+  text-align: left;
+}
+
+.credits h2{
+  margin-top: 30px;
   text-align: left;
 }
 
@@ -97,7 +102,19 @@ input[type="number"] {
   padding-left: 20px; /* This ensures the bullets/numbers are inside the view */
 }
 
+.how-to-use li {
+  margin-bottom: 10px;
+}
+
 .how-to-use p,
 .credits p {
   text-align: left;
+}
+
+.title{
+  text-align: center;
+}
+
+.column{
+  padding: 50px;
 }

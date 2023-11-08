@@ -1,5 +1,5 @@
 document.getElementById("helpBtn").addEventListener("click", function () {
-  window.location.href = window.location.href + "help";
+  window.location.href = "help";
 });
 document.getElementById("feedbackBtn").addEventListener("click", function () {
   alert("Todo: link to feedback form");
