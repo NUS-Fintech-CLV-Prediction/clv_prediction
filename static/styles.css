@@ -1,83 +1,103 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #f4f4f4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f4f4f4;
 }
 
 #logo {
-    max-width: 150px;
+  max-width: 150px;
 }
 
 .buttons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 button {
-    font-size: 20px;
-    font-weight: bold;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    transition: color 0.3s;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
 }
 
 button:hover {
-    color: #49FF39;
+  color: #49ff39;
 }
 
 .file-upload-container {
-    margin: auto;
-    padding: 10px;
-    max-width: 700px;
-    background-color: #49FF39;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+  margin: auto;
+  padding: 10px;
+  max-width: 700px;
+  background-color: #49ff39;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
-label, .dropzone {
-    display: block;
-    margin-bottom: 0px;
+label,
+.dropzone {
+  display: block;
+  margin-bottom: 0px;
 }
 
 input[type="number"] {
-    width: calc(100% - 20px);
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
+  width: calc(100% - 20px);
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .dropzone {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 170px;
-    background-color: #44de33;
-    cursor: pointer;
-    padding: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 170px;
+  background-color: #44de33;
+  cursor: pointer;
+  padding: auto;
 }
 
 #dropzoneLogo {
-    max-width: 60px;
-    margin: 5px;
+  max-width: 60px;
+  margin: 5px;
 }
 
 #upload-description {
-    margin: auto;
-    padding: 20px;
-    max-width: 700px;
-    border-radius: 5px;
-    text-align: left;
+  margin: auto;
+  padding: 20px;
+  max-width: 700px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.how-to-use h2,
+.credits h2 {
+  margin-top: 0;
+  text-align: left;
+}
+
+.how-to-use ol {
+  text-align: left;
+  padding-left: 20px; /* This ensures the bullets/numbers are inside the view */
+}
+
+.how-to-use p,
+.credits p {
+  text-align: left;
 }
