@@ -11,29 +11,29 @@
     <header>
         <img src="/static/fintech-transparent.png" alt="Your Logo" id="logo">
         <div class="buttons">
-            <button class="feedbackBtn" id="feedbackBtn">Feedback</button>
-            <button class="helpBtn" id="helpBtn">Help?</button>
+            <button class="header-button" id="feedbackBtn">Feedback</button>
+            <button class="header-button" id="helpBtn">Help?</button>
         </div>
     </header>
-
-    <div class="image-container">
-        <img src="{{ url_for('static', filename='my_plot.png') }}" alt="Customer Cluster Image" class="cluster-image">
-    </div>
     <br />
-    <br />
-    <div class="download-buttons">
-        {% for filename in files[:5] %} {# Limit to the first 5 items #}
-            <div class="file-card">
-                <h2 class="file-name">{{ filename }}</h2> 
-                <form action="{{ url_for('download_file', filename=filename) }}" method="GET">
-                    <!-- Black and white download button -->
-                    <button type="submit" class="download-button">{{ "Download" }}</button>
-                </form>
-            </div>
-        {% endfor %}
-        <!-- Add a red button to go back to the root page -->
-        <br />
-        <button onclick="window.location.href = '{{ url_for('homepage') }}'" class="back-button">Back to Home</button>
+    <div class="main-container">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='my_plot.png') }}" alt="Customer Cluster Image" class="cluster-image">
+        </div>
+        <div class="download-buttons">
+            {% for filename in files[:5] %} {# Limit to the first 5 items #}
+                <div class="file-card">
+                    <h2 class="file-name">{{ filename }}</h2> 
+                    <form action="{{ url_for('download_file', filename=filename) }}" method="GET">
+                        <!-- Black and white download button -->
+                        <button type="submit" class="download-button">{{ "Download" }}</button>
+                    </form>
+                </div>
+            {% endfor %}
+            <!-- Add a red button to go back to the root page -->
+            <br />
+            <button onclick="window.location.href = '{{ url_for('homepage') }}'" class="back-button">Back to Home</button>
+        </div>
     </div>
 
     <script src="/static/script.js"></script>

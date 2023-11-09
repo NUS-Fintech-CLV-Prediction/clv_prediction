@@ -11,7 +11,6 @@ import csv
 import datetime
 import seaborn as sns
 import datetime as dt
-from graph import plot_calibration_purchases_vs_holdout_purchases
 
 
 def process_csv(filename, month):
@@ -89,8 +88,6 @@ def process_csv(filename, month):
             df_rfmt_cal['recency_cal'],
             df_rfmt_cal['T_cal'])
 
-    plot_calibration_purchases_vs_holdout_purchases(model, df_rfmt_cal)
-
     df_rfmt['predicted_purchases'] = model.conditional_expected_number_of_purchases_up_to_time(180,
                                                                                         df_rfmt['frequency'],
                                                                                         df_rfmt['recency'],
@@ -120,67 +117,6 @@ def process_csv(filename, month):
     
     df_rfmt = df_rfmt.reset_index()
     #output = df_rfmt.to_csv('output\clv_predicted.csv')
-    
-
-    ##################################################################
-    # Visualise Clusters #
-    ##################################################################
-    df = df_rfmt
-    km_model = KMeans(n_clusters=4)
-    km_model.fit(df)
-    
-    # Creating a new column called cluster whose values are the corresponding cluster for each point.
-    df['cluster'] = km_model.labels_
-
-
-    df_clusters= df.groupby(['cluster'])['CLV']\
-                    .agg(['mean', "count"])\
-                    .reset_index()
-
-    df_clusters.columns = ["cluster", "avg_CLV", "n_customers"]
-
-    df_clusters['perct_customers'] = (df_clusters['n_customers']/df_clusters['n_customers']\
-                                .sum())*100
-    df_clusters = df_clusters.sort_values(by = 'avg_CLV', ascending=False)
-    cluster_mapping = {
-    0: 'Bronze',
-    1: 'Diamond',
-    2: 'Gold',
-    3: 'Silver'
-    }
-
-    # Replace the "cluster" column values based on the mapping
-    df['customer_category'] = df['cluster'].map(cluster_mapping)
-
-    df_clusters = df_clusters.reset_index(drop=True)
-
-    df_cat = pd.DataFrame(df.groupby(['customer_category'])['CLV']\
-                    .agg('mean')).reset_index()
-
-
-    plt.figure(figsize=(8, 8))
-
-
-    plots = sns.barplot(x="customer_category", y="CLV", data=df_cat)
-
-    # Iterating over the bars one-by-one
-    for bar in plots.patches:
-        plots.annotate(format(bar.get_height(), '.2f'),
-                    (bar.get_x() + bar.get_width() / 2,
-                        bar.get_height()), ha='center', va='center',
-                    size=15, xytext=(0, 8),textcoords='offset points')
-
-    plt.xlabel("Customer category", size=14)
-
-    # Setting the label for y-axis
-    plt.ylabel("CLV", size=14)
-
-    # Setting the title for the graph
-    plt.title("CLV per category")
-
-    plt.savefig('static/my_plot.png')
-
-
 
 
     ##################################################################
@@ -203,6 +139,36 @@ def process_csv(filename, month):
         writer.writerow(["CustomerID", 'CLV'])
         for index, row in output.iterrows():
             writer.writerow([row["CustomerID"], row['CLV']])
+    
+
+    ##################################################################
+    # Visualise Clusters #
+    ##################################################################
+    km_model = KMeans(n_clusters=4)
+    km_model.fit(df_rfmt)
+    df_rfmt['cluster'] = km_model.labels_
+
+    df_clusters = df_rfmt.groupby(['cluster'])['CLV']\
+                        .agg(['mean', "count"])\
+                        .reset_index()
+
+    df_clusters['order'] = df_clusters['mean'].rank(ascending=False, method='min')
+
+    category_mapping = {1: 'Diamond', 2: 'Gold', 3: 'Silver', 4: 'Bronze'}
+    df_clusters['customer_category'] = df_clusters['order'].map(category_mapping)
+
+    df_clusters = df_clusters.sort_values(by='order')
+
+    # Set the figure size before creating the bar graph
+    plt.figure(figsize=(9, 7))  # Adjust width and height as needed
+
+    plt.bar(df_clusters['customer_category'], df_clusters['mean'], color=['blue', 'gold', 'silver', 'brown'])
+    plt.xlabel('Customer Category')
+    plt.ylabel('Mean Value')
+    plt.title('Mean Value by Customer Category')
+
+    plt.savefig('static/my_plot.png')
+
     
     return output_file
 

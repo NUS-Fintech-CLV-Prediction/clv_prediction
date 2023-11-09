@@ -39,7 +39,7 @@ def upload():
 
 @app.route('/download')
 def download():
-    return render_template('download.html', files=os.listdir('output'), plt_url = 'static/myplot.png', val_url = 'static/model_validation.png')
+    return render_template('download.html', files=os.listdir('output'), plt_url = 'static/myplot.png')
 
 @app.route('/download/<filename>')
 def download_file(filename):

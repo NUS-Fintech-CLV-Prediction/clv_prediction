@@ -14,18 +14,25 @@ body {
     text-align: center;
 }
 
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 
 #logo {
-    max-width: 150px;
+    max-width: 200px;
 }
 
 .buttons {
     display: flex;
-    gap: 10px;
+    gap: 30px;
+    margin-right: 40px;
 }
 
-button {
-    font-size: 20px;
+.header-button {
+    font-size: 30px;
     font-weight: bold;
     background-color: transparent;
     border: none;
@@ -33,24 +40,22 @@ button {
     transition: color 0.3s;
 }
 
-button:hover {
+.header-button:hover {
     color: #49FF39;
 }
 
-.download-buttons {
-    text-align: center; /* Center button text */
-}
 
 
 /* Style for the "Download" button inside the card */
 .download-button {
     background-color: #49FF39;
-    color: #fff;
+    color: black;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 30px;
     border-radius: 4px;
     cursor: pointer;
-    margin-left: 50px;
+    font-size: 20px; /* Adjust the font size to your preference */
+    font-weight: bold;
 }
 
 /* Style for button hover state */
@@ -58,29 +63,42 @@ button:hover {
     background-color: #4CAF50; /* Slightly darker green background color on hover */
 }
 
-/* Style for the file name card with rounded corners */
+.download-buttons {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack the file cards vertically */
+    align-items: center; /* Center the content horizontally within the container */
+    order: 1;
+}
+
 .file-card {
+    width: 850px;
     background-color: #fff;
     padding: 15px;
     border: 1px solid #ddd;
     margin-bottom: 10px;
     display: flex;
-    align-items: left;
-    justify-content: space-between;
-    border-radius: 10px; /* Add this line to round the corners */
+    justify-content: space-between; /* Add this line to space the content within the card */
+    align-items: center;
+    border-radius: 10px;
 }
 
 
-/* Style for the cluster image */
 .cluster-image {
-    max-width: 100%; /* Ensure the image doesn't exceed its container width */
-    display: block; /* Make the image a block element to control its position */
+    max-width: 100%;
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
 }
 
 /* Container for the cluster image */
 .image-container {
-    float: right;
-    margin-left: 10px;
+    flex: 1;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center; /* Center the content horizontally within the container */
+    align-items: center; /* Center the content vertically within the container */
+    order:2;
 }
 
 /* Style for the back button to match the download button */
@@ -88,14 +106,16 @@ button:hover {
     background-color: #FF0000;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 30px;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 18px; /* Adjust the font size to your preference */
+    font-weight: bold;
 }
 
 /* Style for button hover state */
 .back-button:hover {
-    background-color: #333; /* Dark gray background color on hover, matching the download button */
+    background-color: #FF3355; /* Dark gray background color on hover, matching the download button */
 }
 
 
