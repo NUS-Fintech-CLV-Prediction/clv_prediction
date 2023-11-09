@@ -19,7 +19,8 @@ header {
 
 .buttons {
   display: flex;
-  gap: 10px;
+  gap: 30px;
+  margin-right: 40px;
 }
 
 button {
