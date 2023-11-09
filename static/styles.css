@@ -34,7 +34,10 @@ button {
 button:hover {
   color: #49ff39;
 }
-
+h1 {
+  font-size: 40px;
+  margin-bottom: -10px;
+}
 .file-upload-container {
   margin: auto;
   padding: 10px;
