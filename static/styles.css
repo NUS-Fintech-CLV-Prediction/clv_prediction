@@ -88,6 +88,7 @@ input[type="number"] {
 
 .flex-container {
   display: flex;
+  gap: 10px;
 }
 
 .how-to-use h2,
