@@ -26,7 +26,6 @@ def process_csv(filename, month):
     df['CustomerID'] = df['CustomerID'].astype('str')
     df['Description'] = df['Description'].astype('str')
     df['StockCode'] = df['StockCode'].astype('str')
-    df['Country'] = df['Country'].astype('str')
 
     df = df[~df['InvoiceNo'].str.startswith('c')].reset_index(drop = True)
     df['Monetary'] = df['Quantity'] * df['UnitPrice']
