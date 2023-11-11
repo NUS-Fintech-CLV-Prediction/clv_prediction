@@ -112,9 +112,11 @@ input[type="number"] {
   margin-bottom: 10px;
 }
 
-.how-to-use p,
-.credits p {
+.credits p, 
+.faq p, 
+.how-to-use p{
   text-align: left;
+  line-height: 1.4;
 }
 
 .title{
