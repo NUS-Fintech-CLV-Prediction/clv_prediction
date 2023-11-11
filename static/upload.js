@@ -2,7 +2,7 @@ document.getElementById("helpBtn").addEventListener("click", function () {
   window.location.href = "help";
 });
 document.getElementById("feedbackBtn").addEventListener("click", function () {
-  alert("Todo: link to feedback form");
+  window.open("https://docs.google.com/forms/d/1tQ5B7oTPbrH-Ucr43D6kHXrRL7CqscEoaC8rQdf9x7M/viewform?edit_requested=true", "_blank");
 });
 
 const dropzone = document.getElementById("dropzone");
