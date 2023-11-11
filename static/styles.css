@@ -94,11 +94,13 @@ input[type="number"] {
 .faq h2 {
   margin-top: 0;
   text-align: left;
+  margin-bottom: -5px;
 }
 
 .credits h2{
   margin-top: 30px;
   text-align: left;
+  margin-bottom: -5px;
 }
 
 .how-to-use ol {
